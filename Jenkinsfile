@@ -82,10 +82,10 @@ pipeline {
 //                  sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: '''
 //                      python36 bin/components-db.py validatedeploy ${ENV} ${params.name} ${params.version} || true
 //                      python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}
-                    sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: '''
+                    sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: """
                         echo python36 bin/components-db.py validatedeploy ${ENV} ${params.name} ${params.version} || true
                         echo python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}
-                  '''
+                  """
                   
 
 //                  def statusCode = sh(script: "python -u bin/k8s/verify.py ${params.name} cwt-${ENV}", returnStatus: true)
