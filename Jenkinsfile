@@ -103,10 +103,12 @@ pipeline {
 
 
        stage("Create cloudfront invalidation for cwt-webui") {
-         anyOf {
+         when {
+           anyOf {
                expression { params.name == "cwt-webui" } 
                expression { params.name == "cwt-webui-old-home-page" } 
             }
+         }
          steps {
             script {
                 withCredentials([string(credentialsId: "${params.name}-id", variable: 'CF_ID')]) {
