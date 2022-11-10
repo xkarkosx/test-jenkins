@@ -59,7 +59,8 @@ pipeline {
             script {
 //                def statusCode = sh(script: "python -u bin/k8s/verify.py ${params.name} cwt-${ENV}", returnStatus: true)
 //                echo ${statusCode}
-                if (statusCode != 0){
+//                if (statusCode != 0){
+                  if (params.name != 0){
 //                  sh label: "ROLLING-BACK DEPLOYMENT!", script: "kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                   sh label: "ROLLING-BACK DEPLOYMENT!", script: "echo kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                   error("Rolled back")
