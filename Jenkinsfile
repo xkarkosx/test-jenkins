@@ -90,7 +90,7 @@ pipeline {
 
 //                  def statusCode = sh(script: "python -u bin/k8s/verify.py ${params.name} cwt-${ENV}", returnStatus: true)
 //                  echo ${statusCode}
-                  if (params.name != 0){
+                  if (params.version != "0"){
 //                    sh label: "ROLLING-BACK SATO DEPLOYMENT!", script: "kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                       sh label: "ROLLING-BACK SATO DEPLOYMENT!", script: "echo kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                       error("Rolled back ${ENV}")
@@ -111,7 +111,8 @@ pipeline {
             script {
                 withCredentials([string(credentialsId: "${params.name}-id", variable: 'CF_ID')]) {
                   echo("Running CDN invalidate")
-                  sh label: "Running CDN invalidate", script: '''aws cloudfront create-invalidation --distribution-id ${CF_ID} --paths "/*"'''
+//                  sh label: "Running CDN invalidate", script: '''aws cloudfront create-invalidation --distribution-id ${CF_ID} --paths "/*"'''
+                   sh label: "Running CDN invalidate", script: '''echo aws cloudfront create-invalidation --distribution-id ${CF_ID} --paths "/*"'''
                 }
             }
           }
