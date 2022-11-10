@@ -102,12 +102,10 @@ pipeline {
             }
          steps {
             script {
-//               if (params.name == "cwt-webui|"cwt-webui-old-home-page""){
                 withCredentials([string(credentialsId: "${params.name}-id", variable: 'CF_ID')]) {
                   echo("Running CDN invalidate")
-                  sh label: "Running CDN invalidate", script: '''aws cloudfront create-invalidation --distribution-id ${CF_ID} --paths "/*"''')
+                  sh label: "Running CDN invalidate", script: '''aws cloudfront create-invalidation --distribution-id ${CF_ID} --paths "/*"'''
                 }
-//              }
             }
           }
 
