@@ -79,9 +79,10 @@ pipeline {
             script {
                 def sato_svc_arr = "autocomplete-service cbr-proxy config configurator cwt-apache-sites cwt-idm-svc cwt-idm-ui cwt-login-services-svc cwt-property-anonimizer-svc cwt-togo-version-svc dal-service digital-itinerary-parser-service flight-alert-service flightdeatils-service hotels-service nodejs-flightalerts places pnr-receiver-service poll-service push-service resource-service scheduling-service storage-service trips users cwt-notifications-svc cwt-notifications-verify-task cwt-failed-notifications-requeuer" 
                 if (sato_svc_arr.find(params.name)){
-                  sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: '''
+//                  sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: '''
 //                      python36 bin/components-db.py validatedeploy ${ENV} ${params.name} ${params.version} || true
 //                      python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}
+                    sh label: "Running service deployment in SATO - Make sure you are testing SATO as well", script: '''
                         echo "python36 bin/components-db.py validatedeploy ${ENV} ${params.name} ${params.version} || true"
                         echo "python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}"
                   '''
