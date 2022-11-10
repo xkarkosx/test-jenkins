@@ -53,7 +53,7 @@ pipeline {
           }
         }
 
-        stage('Run deploy script') {
+        stage('Verify deploy script') {
           steps {
             script {
                 def statusCode = sh(script: "python -u bin/k8s/verify.py ${params.name} cwt-${ENV}", returnStatus: true)
