@@ -103,7 +103,7 @@ pipeline {
 
 
        stage("Create cloudfront invalidation for cwt-webui") {
-         when {
+         anyOf {
                expression { params.name == "cwt-webui" } 
                expression { params.name == "cwt-webui-old-home-page" } 
             }
