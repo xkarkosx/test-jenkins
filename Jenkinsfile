@@ -46,6 +46,7 @@ pipeline {
           steps {
             script {
  //             sh("python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}")
+                echo("python36 bin/k8s/deploy.py -e cwt-${ENV} -v ${params.version} ${params.name}")
                 sleep 10
                 echo "Run script"
                 
