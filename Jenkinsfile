@@ -27,7 +27,7 @@ pipeline {
         stage('Check SNOW ticker number') {
           steps {
             script {
-              if (Change_Request_Number == '') {
+              if (params.Change_Request_Number == '') {
                 error("Incorrect SNOW ticker number entered !!")
               }
             }
