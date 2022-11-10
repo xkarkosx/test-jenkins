@@ -63,7 +63,7 @@ pipeline {
                   if (params.version != 0){
 //                  sh label: "ROLLING-BACK DEPLOYMENT!", script: "kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                   sh label: "ROLLING-BACK DEPLOYMENT!", script: "echo kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
-                  error("Rolled back")
+                      error("Rolled back ${ENV}")
                 }
                 
             }
@@ -92,7 +92,7 @@ pipeline {
                   if (params.name != 0){
 //                    sh label: "ROLLING-BACK SATO DEPLOYMENT!", script: "kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
                       sh label: "ROLLING-BACK SATO DEPLOYMENT!", script: "echo kubectl --context cwt-${ENV} rollout undo deployment ${params.name}"
-                    error("Rolled back")
+                      error("Rolled back ${ENV}")
                   }
                 }
              }
