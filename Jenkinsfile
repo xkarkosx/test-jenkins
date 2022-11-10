@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters{
-        string(name: 'test_name', description: 'Enter information about name')
+        string(name: 'name', description: 'Enter information about name')
         string(name: 'version', description: 'Enter information about version')
         string(name: 'Change_Request_Number', description: 'Enter information about Change_Request_Number')
     }
